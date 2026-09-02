@@ -1,0 +1,15 @@
+office software security software and req that an organization users as the base line for launching instances
+
+
+AWS aws control tower helps an organization multi account aws environments using a standardized accounts,security controls.policies,and centralized governance for example>>>>
+      
+               imagine you tellyour it team to create 50 aws accounts then they need to create accounts configure iam configure logging configure security apply polices set up networking configure governance monitor compliance doing this manually is painful. Hence control towerautomates and stanrdizeds much of the landing zones setup and governance.
+
+Landing zone
+           cloud formation helper scripts
+            --- cloud formation helper scripts are tools that help an ec2 instance configure itself during the cloud formation deployment 
+            --- the important ones are cfn-init  and cfn-signal 
+            cfn-init
+               general words
+                  is like a instruction sheet given to an ec2 instance telling it how to configure itself 
+                for example:- suppose a cloud formation creates an ec2 instance and you want it to automatically install appache server and start appache service (hhtpd) instead of putting everything in to a long user data script you can use cfn-init. with cloud formation meta data
