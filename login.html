@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}
+<div class="auth"><h1>🛡️ CyberGuard</h1><p>Cybersecurity Awareness Assistant</p>
+<form method="post"><input name="username" placeholder="Username" required>
+<input name="password" type="password" placeholder="Password" required><button>Login</button></form>
+<p>New user? <a href="{{url_for('register')}}">Register</a></p>
+<p class="hint">Demo admin: <b>admin</b> / <b>Admin@123</b></p></div>
+{% endblock %}

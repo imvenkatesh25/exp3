@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block content %}
+<div class="wrap"><section class="hero"><div><h1>Admin Dashboard</h1><p>Manage knowledge, users, and cybersecurity activity.</p></div><span>⚙️</span></section>
+<div class="stats">
+<div><b>{{stats.users}}</b><span>Users</span></div><div><b>{{stats.chats}}</b><span>Chat Messages</span></div>
+<div><b>{{stats.knowledge}}</b><span>Knowledge Items</span></div><div><b>{{stats.events}}</b><span>Activity Events</span></div></div>
+
+<div class="card"><h2>➕ Add Chatbot Knowledge</h2><form method="post" action="{{url_for('knowledge_add')}}" class="knowledge-form">
+<input name="topic" placeholder="Topic" required><input name="keywords" placeholder="keywords, separated, by, commas" required>
+<textarea name="answer" placeholder="Chatbot response..." required></textarea><button>Add Knowledge</button></form></div>
+
+<div class="card"><h2>🧠 Chatbot Knowledge Database</h2>
+{% for k in knowledge %}<details><summary><b>{{k.topic}}</b> — {{k.keywords}}</summary>
+<form method="post" action="{{url_for('knowledge_update',item_id=k.id)}}" class="knowledge-form">
+<input name="topic" value="{{k.topic}}" required><input name="keywords" value="{{k.keywords}}" required>
+<textarea name="answer" required>{{k.answer}}</textarea><button>Update</button></form>
+<form method="post" action="{{url_for('knowledge_delete',item_id=k.id)}}" onsubmit="return confirm('Delete this knowledge item?')"><button class="danger">Delete</button></form>
+</details>{% endfor %}</div>
+
+<div class="card"><h2>👥 Users</h2><div class="table-wrap"><table><tr><th>ID</th><th>Username</th><th>Role</th><th>Created</th></tr>
+{% for u in users %}<tr><td>{{u.id}}</td><td>{{u.username}}</td><td>{{'Admin' if u.is_admin else 'User'}}</td><td>{{u.created_at}}</td></tr>{% endfor %}</table></div></div>
+
+<div class="card"><h2>📊 User Activity Report</h2><div class="table-wrap"><table><tr><th>Time</th><th>User</th><th>Action</th><th>Details</th></tr>
+{% for a in activities %}<tr><td>{{a.created_at}}</td><td>{{a.username}}</td><td>{{a.action}}</td><td>{{a.details}}</td></tr>{% endfor %}</table></div></div>
+</div>{% endblock %}

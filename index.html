@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}
+<div class="wrap"><section class="hero"><div><h1>Cybersecurity Awareness Assistant</h1><p>Learn, ask questions, and perform basic defensive checks.</p></div><span>🛡️</span></section>
+<div class="columns"><section class="card chat"><h2>💬 Chatbot</h2><div id="chat"></div>
+<div class="row"><input id="msg" placeholder="Ask about phishing, passwords, malware..." onkeydown="if(event.key==='Enter')send()"><button onclick="send()">Send</button></div></section>
+<aside><div class="card"><h2>🔑 Password Checker</h2><input id="pw" type="password" placeholder="Test password only"><button onclick="pwcheck()">Check</button><div id="pwout"></div><small>Never enter a real password.</small></div>
+<div class="card"><h2>🔗 URL Checker</h2><input id="url" placeholder="https://example.com"><button onclick="urlcheck()">Analyze</button><div id="urlout"></div></div>
+<div class="card"><h2>💡 Tips</h2><button onclick="tips()">Generate</button><ul id="tips"></ul></div></aside></div></div>
+<script src="{{url_for('static',filename='script.js')}}"></script>{% endblock %}

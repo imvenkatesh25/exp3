@@ -1,0 +1,11 @@
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberGuard Assistant</title><link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head><body>
+<header><div class="brand">🛡️ CyberGuard Assistant</div>
+<nav>{% if session.get('user_id') %}<span>{{session.get('username')}}</span>
+{% if session.get('is_admin') %}<a href="{{url_for('admin_dashboard')}}">Admin</a>{% endif %}
+<a href="{{url_for('logout')}}">Logout</a>{% endif %}</nav></header>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for c,m in messages %}<div class="flash {{c}}">{{m}}</div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}
+</body></html>
